@@ -1,9 +1,20 @@
+# Import libraries
 import streamlit as st
 import pandas as pd
 import sqlite3
+import altair as alt
 import plotly.express as px
 
+
 # Function to load data from SQLite database
+
+# Page configuration
+def main():
+    st.title('Women\'s Violence Data Dashboard')
+    st.sidebar.title('Dashboard Menu')
+
+alt.themes.enable("dark")
+
 @st.cache_data
 def load_data():
     conn = sqlite3.connect('voilance.db')
@@ -12,9 +23,8 @@ def load_data():
     conn.close()
     return df
 
-def main():
-    st.title('Women\'s Violence Data Dashboard')
-    st.sidebar.title('Dashboard Menu')
+color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
+selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
 # Load data
 df = load_data()
@@ -28,6 +38,7 @@ df = load_data()
 if st.sidebar.checkbox('Show Raw Data'):
     st.subheader('Raw Data')
     st.write(df)
+
 
 # Example plot using Plotly
 st.sidebar.subheader('Data Visualization Options')
@@ -53,6 +64,7 @@ elif plot_type == 'Scatter Plot':
         st.subheader('Scatter Plot')
         fig = px.scatter(df, x='Age', y='Violence')
         st.plotly_chart(fig)
+
 
 
 
