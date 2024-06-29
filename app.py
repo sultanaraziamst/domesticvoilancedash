@@ -4,6 +4,7 @@ import pandas as pd
 import sqlite3
 import altair as alt
 import plotly.express as px
+import numpy as np 
 
 
 # Function to load data from SQLite database
@@ -66,11 +67,11 @@ elif plot_type == 'Scatter Plot':
         st.plotly_chart(fig)
 
 
+#column 
 
+chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["Marrital status", "Income", "Eucation"])
 
-
-
-
+st.line_chart(chart_data)
 
 
 
