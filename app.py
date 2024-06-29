@@ -66,6 +66,11 @@ elif plot_type == 'Scatter Plot':
         fig = px.scatter(df, x='Age', y='Violence')
         st.plotly_chart(fig)
 
+elif plot_type == 'Line Graph':
+        st.subheader('Linegraph')
+        chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["Marrital status", "Income", "Eucation"])
+        st.line_chart(chart_data)
+
 
 #column 
 
