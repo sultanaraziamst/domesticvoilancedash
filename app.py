@@ -43,7 +43,7 @@ if st.sidebar.checkbox('Show Raw Data'):
 
 # Example plot using Plotly
 st.sidebar.subheader('Data Visualization Options')
-plot_type = st.sidebar.selectbox('Select a plot type', ['Bar Chart', 'Pie Chart', 'Histogram', 'Scatter Plot'])
+plot_type = st.sidebar.selectbox('Select a plot type', ['Bar Chart', 'Histogram', 'Scatter Plot'])
 
 
 if plot_type == 'Bar Chart':
@@ -55,6 +55,7 @@ elif plot_type == 'Pie Chart':
         st.subheader('Pie Chart')
         fig = px.pie(df, values='Violence', names='Marital status')
         st.plotly_chart(fig)
+
 
 elif plot_type == 'Histogram':
         st.subheader('Histogram')
@@ -70,8 +71,6 @@ elif plot_type == 'Scatter Plot':
 chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["Marrital status", "Income", "Eucation", ])
 
 st.line_chart(chart_data)
-
-
 
 
 
